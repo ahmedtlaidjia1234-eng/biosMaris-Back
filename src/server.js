@@ -12,7 +12,7 @@ const app = express();
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
 app.use(cors({
-    origin: "https://technotes-api.onrender.com", // put your frontend link here
+    origin: "https://biosmaris.onrender.com/", // put your frontend link here
   }));         // Enable CORS
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
