@@ -15,7 +15,8 @@ app.use(express.json()); // Parse JSON request bodies
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://biosmaris.onrender.com"
+  "https://biosmaris.onrender.com",
+  "*"
 ];
 
 app.use(
