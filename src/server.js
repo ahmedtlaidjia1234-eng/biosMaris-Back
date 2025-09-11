@@ -11,12 +11,31 @@ const app = express();
 
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
-app.use(cors({
-    origin: "https://biosmaris.onrender.com", 
-    credentials: true
-  }));         // Enable CORS
+
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://biosmaris.onrender.com"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+); // Enable CORS
+
+
 app.use(helmet());
+
 app.use(express.urlencoded({ extended: true }));
+
        // Security headers
 // app.use(morgan("dev"));  // Logger
 
