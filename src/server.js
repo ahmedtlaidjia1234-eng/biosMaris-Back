@@ -17,17 +17,9 @@ const allowedOrigins = [
 
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
-<<<<<<< HEAD
-=======
 
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://biosmaris.onrender.com",
-  "*"
-];
 
->>>>>>> 6da62aea6f3072275e2bcb6610ea2a01b55fd379
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -39,13 +31,12 @@ app.use(
     },
     credentials: true,
   })
-<<<<<<< HEAD
+
 );        // Enable CORS
-=======
-); // Enable CORS
 
 
->>>>>>> 6da62aea6f3072275e2bcb6610ea2a01b55fd379
+
+
 app.use(helmet());
 
 app.use(express.urlencoded({ extended: true }));
