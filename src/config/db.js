@@ -10,10 +10,17 @@ export const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: process.env.DB_DIALECT, 
-    logging: false, // set true to see raw SQL logs
+    dialect: process.env.DB_DIALECT,
+    logging: false,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
   }
 );
+
 
 export const connectDB = async () => {
   try {
