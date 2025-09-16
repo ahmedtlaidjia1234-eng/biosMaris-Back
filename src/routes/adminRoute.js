@@ -25,7 +25,7 @@ router.post("/login", async (req, res) => {
     await Admin.update({ auth: true }, { where: { name: "owner" } });
 
     // re-fetch to return updated object
-    const updatedAdmin = await Admin.findOne({ where: { name: "owner" },attributes: { exclude: ["password"] },  });
+    const updatedAdmin = await Admin.findOne({ where: { name: "owner",auth : true },attributes: { exclude: ["password"] },  });
 
     res.status(200).json({
       message: "Login successful",
@@ -104,6 +104,19 @@ router.get("/getadminData",async (req,res)=>{
     res.status(500).json({ error: "Internal server error" });
   }
 })
+
+
+router.post("/addadmin", async (req, res) => {
+  try {
+    console.log(req.body)
+    const { name, password, email, phone } = req.body;
+    const user = await Admin.create({ name, password, email, phone });
+    res.status(201).json(user);
+    // console.log(res.status(201).json(user))
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 
 
 export default router;

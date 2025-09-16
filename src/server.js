@@ -5,15 +5,30 @@ import helmet from "helmet";
 import { PORT } from "./config/env.js";
 import productRoute from "./routes/ProductsRoute.js";
 import adminRoute from "./routes/adminRoute.js";
+import ContactRoute from "./routes/ContactRoute.js";
 import { connectDB, sequelize } from "./config/db.js";
 
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://biosmaris.onrender.com"
+];
+
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
-app.use(cors({
-    origin: "https://technotes-api.onrender.com", // put your frontend link here
-  }));         // Enable CORS
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);        // Enable CORS
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
        // Security headers
@@ -21,8 +36,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 // app.use("/api", router);
-app.use("/api/products", productRoute);
+app.use("/api/products", productRoute); 
 app.use("/api/admin",adminRoute) 
+app.use("/api/contact",ContactRoute)  
 
 // Start server
 connectDB().then(() => {
