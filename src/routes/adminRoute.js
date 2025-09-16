@@ -119,8 +119,5 @@ router.post("/addadmin", async (req, res) => {
 });
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 6da62aea6f3072275e2bcb6610ea2a01b55fd379
 export default router;
