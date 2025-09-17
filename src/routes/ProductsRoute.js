@@ -7,11 +7,11 @@ const router = express.Router();
 // ➡️ Create user (POST)
 router.post("/addProduct", async (req, res) => {
   try {
-    console.log(req.body)
+   
     const { name, price, category, qrCode, description, images, ingredients, benefits, usage } = req.body;
     const user = await Products.create({ name, price, category, qrCode, description, images, ingredients, benefits, usage });
     res.status(201).json(user);
-    // console.log(res.status(201).json(user))
+    
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -29,7 +29,7 @@ router.get("/getProducts", async (req, res) => {
  
 router.put('/updateProduct',async (req,res)=>{
     const { name, price, category, qrCode, description, images, ingredients, benefits, usage } = req.body;
-  console.log(req.body)
+  
     try{
     const getSpecProd = await Products.findOne({qrCode})
     

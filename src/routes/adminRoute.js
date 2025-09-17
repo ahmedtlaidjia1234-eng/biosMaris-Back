@@ -108,11 +108,11 @@ router.get("/getadminData",async (req,res)=>{
 
 router.post("/addadmin", async (req, res) => {
   try {
-    console.log(req.body)
+    
     const { name, password, email, phone } = req.body;
     const user = await Admin.create({ name, password, email, phone });
     res.status(201).json(user);
-    // console.log(res.status(201).json(user))
+  
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

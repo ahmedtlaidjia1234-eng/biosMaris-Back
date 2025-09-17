@@ -48,7 +48,7 @@ router.delete('/deletemessage',async (req,res)=>{
 
 router.put('/updatemessage',async (req,res)=>{
     const { email } = req.body;
-  console.log(req.body)
+
     try{
     const getmessage = await Contact.findOne({email},{where : email})
     
