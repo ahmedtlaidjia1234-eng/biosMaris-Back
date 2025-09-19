@@ -20,7 +20,7 @@ const Admin = sequelize.define('adminLog',{
         allowNull : true 
     },
     phone:{
-       type : DataTypes.INTEGER,
+       type : DataTypes.STRING,
         allowNull : true 
     }
 

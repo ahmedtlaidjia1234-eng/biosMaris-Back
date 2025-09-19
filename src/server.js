@@ -12,8 +12,8 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://biosmaris.onrender.com"
-];
+  "https://biosmaris.onrender.com",
+]; 
 
 // Middleware
 app.use(express.json()); // Parse JSON request bodies

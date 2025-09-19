@@ -9,7 +9,7 @@ const Contact = sequelize.define('contactlist',{
     },
     email : {
         type : DataTypes.STRING,
-        allowNull : false
+        allowNull : false 
     },
     phone : {
         type : DataTypes.STRING,
