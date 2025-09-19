@@ -72,7 +72,7 @@ const { email , number } = req.body
       return res.status(404).json({ message: "Admin not found" });
     }
 
-    await Admin.update({ email , number:`${number}` }, { where: { name: "owner" } });
+    await Admin.update({ email , phone:`${number}` }, { where: { name: "owner" } });
 
     const updatedAdmin = await Admin.findOne({ where: { name: "owner" } });
 
