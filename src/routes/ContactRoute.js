@@ -47,15 +47,16 @@ router.delete('/deletemessage',async (req,res)=>{
 
 
 router.put('/updatemessage',async (req,res)=>{
-    const { email } = req.body;
+    const { id } = req.body;
 
     try{
-    const getmessage = await Contact.findOne({email},{where : email})
+    const getmessage = await Contact.findOne({id},{where : id})
     
     if(getmessage){
-          const updateLu = await Contact.update({ read : true }, {where: { email }} );
-         
-      res.status(201).json(updateLu);
+          const updateLu = await Contact.update({ read : true }, {where: { id }} );
+         if(updateLu){
+                res.status(201).json(getmessage.id);
+         }
     } 
   }
   catch (error) {
